@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>6 Music</title>
+  </head>
+  <body>
+    <script src="dist/hls.js"></script>
+    <video id="video"></video>
+    <script>
+      if(Hls.isSupported()) {
+        var video = document.getElementById('video');
+        var hls = new Hls();
+        hls.loadSource('http://a.files.bbci.co.uk/media/live/manifesto/audio/simulcast/hls/uk/sbr_high/llnw/bbc_6music.m3u8');
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED,function() {
+          video.play();
+        });
+        require('electron').ipcRenderer.on('pause', function(event, message) {
+          video.pause();
+        });
+        require('electron').ipcRenderer.on('play', function(event, message) {
+          video.play();
+        });
+     }
+    </script>
+  </body>
+</html>

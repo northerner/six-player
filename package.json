@@ -1,0 +1,13 @@
+{
+  "name": "six-player",
+  "version": "1.0.0",
+  "description": "6 Music player",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js"
+  },
+  "author": "Daniel King",
+  "devDependencies": {
+    "electron-prebuilt": "^0.36.0"
+  }
+}
